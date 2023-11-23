@@ -5,7 +5,6 @@ import { observer } from "mobx-react-lite";
 import { useContext, useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const useStyles = createStyles((_theme: any) => ({
   wrapper: {
     width: '100vw',
@@ -56,12 +55,6 @@ const AuthPage = observer(function() {
       navigate('/')
     }
   };
-
-  if (UStore.isLoading) {
-    return (
-      <div>Загрузка...</div>
-      );
-  }
 
   return(
     <Flex className={classes.wrapper} align="center" justify="center">

@@ -1,11 +1,16 @@
-import { Flex, Stack, Header } from "@mantine/core";
+import { Flex } from "@mantine/core";
 import { Context } from "main";
+import { observer } from "mobx-react-lite";
 import { useContext } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { authRoutes, publicRoutes } from "shared/constants/routes";
 
-export const Routing = () => {
+export const Routing = observer(() => {
   const { UStore } = useContext(Context);
+
+  if (!UStore.isAuth && location.pathname === '/') {
+    return <Navigate to='/login' replace/>
+  }
 
   return (
     <Flex>
@@ -19,4 +24,4 @@ export const Routing = () => {
       </Routes>
       </Flex>
     );
-};
+});
