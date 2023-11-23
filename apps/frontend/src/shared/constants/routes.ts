@@ -6,7 +6,7 @@ const auth = lazy(() => import('pages/auth'));
 
 export const authRoutes = [
   {
-    path: LOGIN_ROUTE,
+    path: '/',
     Component: auth,
     title: 'login',
   },
