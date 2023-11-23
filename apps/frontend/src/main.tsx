@@ -1,13 +1,26 @@
-import { StrictMode } from 'react';
+import App from './app';
+import { StrictMode, createContext } from 'react';
 import * as ReactDOM from 'react-dom/client';
+import UserStore from 'shared/store/UserStore';
 
-import App from './app/app';
+interface State {
+  UStore: UserStore,
+}
+
+const UStore = new UserStore();
+
+export const Context = createContext<State>({
+  UStore,
+});
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <StrictMode>
-    <App />
+    <Context.Provider value={{UStore}}>
+      <App/>
+    </Context.Provider>
   </StrictMode>
 );
