@@ -3,12 +3,14 @@ import { IconDeviceAnalytics, IconHistory } from '@tabler/icons-react';
 import { lazy } from 'react';
 
 const auth = lazy(() => import('pages/auth'));
+const home = lazy(() => import('pages/home'));
 
 export const authRoutes = [
   {
     path: '/',
-    Component: auth,
+    Component: home,
     title: 'login',
+    isAdmin: false,
   },
 ];
 

@@ -95,14 +95,21 @@ legend {
 }
 
 #nav a.active, a.hover div{
-    background: #FFF5F5;
-	border-radius: 8px;
+  background: #4263EB;
+  color: white;
+  border-radius: 8px;
 }
-
-
 
 html {
 	width: 100%;
     height: 100%;
 	overflow-x: hidden;
+}
+
+.wrapper {
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }

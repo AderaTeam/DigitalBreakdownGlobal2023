@@ -1,4 +1,4 @@
-import { Flex } from "@mantine/core";
+import { Flex, Stack } from "@mantine/core";
 import { Context } from "main";
 import { observer } from "mobx-react-lite";
 import { useContext } from "react";
@@ -18,17 +18,21 @@ export const Routing = observer(() => {
   }
 
   return (
-    <Flex>
-      {(UStore.isAuth && (location.pathname !== '/login' && location.pathname !== '/registration')) 
-      ? <NavbarNested/> : <></>}
-      <Routes>
-        {UStore.isAuth && authRoutes.map(({path, Component}) => 
-          <Route key={path} path={path} element={<Component/>}/>
-        )}
-        {publicRoutes.map(({path, Component}) => 
-          <Route key={path} path={path} element={<Component/>}/>
-        )}
-      </Routes>
+    <Flex className="wrapper" bg={'gray.0'} style={{height: '100vh'}}>
+      <Flex>
+        {(UStore.isAuth && (location.pathname !== '/login' && location.pathname !== '/registration')) 
+        ? <NavbarNested/> : <></>}
+        <Stack spacing={40}>
+          <Routes>
+            {UStore.isAuth && authRoutes.map(({path, Component}) => 
+              <Route key={path} path={path} element={<Component/>}/>
+            )}
+            {publicRoutes.map(({path, Component}) => 
+              <Route key={path} path={path} element={<Component/>}/>
+            )}
+          </Routes>
+        </Stack>
       </Flex>
-    );
+    </Flex>
+  );
 });
